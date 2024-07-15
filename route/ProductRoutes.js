@@ -7,7 +7,7 @@ router.post('/create',requiresAuth,product_controller.product_create);
 router.get('/Productlist',requiresAuth, product_controller.product_details);
 router.post('/product_update',requiresAuth, product_controller.product_update);
 router.delete('/deleteproduct',requiresAuth,product_controller.deleteproduct);
-
+router.post('/stringMatch', product_controller.stringMatch);
 
 
 

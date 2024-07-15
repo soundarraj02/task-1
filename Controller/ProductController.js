@@ -2,6 +2,8 @@ const Product = require("../model/ProductModel")
 
 exports.product_create = async function (req, res) {
     let added = await Product.create(req.body);
+    let d = sum(1,1)
+    console.log(d)
     res.send({status:true, message:"Product added", data:added});
 }
 
@@ -38,6 +40,7 @@ let found
             // sortedArray=found
             sortedArray =  found.sort((a,b)=>b.price - a.price);
         } 
+       
         res.send({status:true, message:"Product list", data:found});
     }
      
@@ -56,5 +59,19 @@ exports.deleteproduct = async(req,res) => {
         }
     } catch(e) {
         res.send({status:false, message:"error occurred"});
+    }
+}
+
+function sum(a,b) {
+    console.log("hi")
+    let c = a+b;
+    return c;
+}
+
+exports.stringMatch = async(req,res) => {
+    if(req.body.name=="soundhar") {
+        res.send({status:true,message:"string match"});
+    } else {
+        res.send({status:false, message:"string not match"});
     }
 }
