@@ -40,7 +40,7 @@ let found
         } 
         res.send({status:true, message:"Product list", data:found});
     }
-    
+     
 exports.product_update = async function (req, res) {
     let update = await Product.findOneAndUpdate({_id:req.query.id},req.body);
     let found = await Product.findOne({_id:req.query.id});
