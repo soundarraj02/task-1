@@ -8,14 +8,7 @@ exports.product_create = async function (req, res) {
 }
 
 
-// exports.product_details = async(req,res) => {
-//     try{
-//         let found = await Product.find({isActive:true});
-//         res.send({status:true, message:"Product list", data:found})
-//     } catch(e) {
-//         res.send({status:false, message:"error occurred"});
-//     }
-// }
+
 exports.product_details = async function (req, res) {
         let skip = 0
         let limit = req.query.limit
