@@ -1,3 +1,4 @@
+ const { modelNames } = require("mongoose");
 const Product = require("../model/ProductModel")
 
 exports.product_create = async function (req, res) {
@@ -91,3 +92,9 @@ exports.sumArray = async(req,res)=>{
     console.log(count)
     res.send({status:true,data:{total:count}});
 }
+
+  
+ exports.RemoveDuplicate = async(req,res)=>{
+    let resArr = [...new Set(req.body.name.map(a => a))];
+    res.send({status:true,message:"Remove duplicate done",data:resArr});
+ }
