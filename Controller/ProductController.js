@@ -16,7 +16,7 @@ exports.product_details = async function (req, res) {
         if (page != 1) {
             skip = (page - 1) * parseInt(limit)
         }
-let found 
+        let found 
         if(req.query.searchQuery){
             found = await Product.find({name:{ $regex: req.query.searchQuery, $options: "i" },isActive:true},);
         }else{
@@ -33,6 +33,7 @@ let found
             // sortedArray=found
             sortedArray =  found.sort((a,b)=>b.price - a.price);
         } 
+        
        
         res.send({status:true, message:"Product list", data:found});
     }
@@ -67,4 +68,26 @@ exports.stringMatch = async(req,res) => {
     } else {
         res.send({status:false, message:"string not match"});
     }
+}
+
+exports.testing = async(req,res)=>{
+    let karthi = [];
+    let soundhar=[];
+    req.body.name.forEach(e=>{
+        if(e=="karthi") {
+            karthi.push(e);
+        } else if (e=="soundar") {
+            soundhar.push(e);
+        }
+    })
+    res.send({status:true, data:{karthi:karthi,soundhar:soundhar}});
+}
+
+exports.sumArray = async(req,res)=>{
+    let count=0;
+    req.body.sumArray.forEach(e=>{
+        count=count+e.amount
+    })
+    console.log(count)
+    res.send({status:true,data:{total:count}});
 }
