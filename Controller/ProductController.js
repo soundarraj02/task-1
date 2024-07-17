@@ -19,9 +19,9 @@ exports.product_details = async function (req, res) {
         }
         let found 
         if(req.query.searchQuery){
-            found = await Product.find({name:{ $regex: req.query.searchQuery, $options: "i" },isActive:true},);
+            found = await Product.find({name:{ $regex: req.query.searchQuery, $options: "i" },isActive:true}).populate("category");
         }else{
-            found = await Product .find({isActive:true},);
+            found = await Product .find({isActive:true}).select({name:1}).populate("category","name");
         }
         let sortedArray;
         if(req.query.priceVariant) {
@@ -95,6 +95,22 @@ exports.sumArray = async(req,res)=>{
 
   
  exports.RemoveDuplicate = async(req,res)=>{
-    let resArr = [...new Set(req.body.name.map(a => a))];
+    let resArr = [...new Set(req.body.order.map(a=> a.user.userId))];
     res.send({status:true,message:"Remove duplicate done",data:resArr});
  }
+
+ exports.reverseString = async(req,res) => {
+    // Step 1. Use the split() method to return a new array
+    var splitString = req.body.str.split(""); // var splitString = "hello".split("");
+    // ["h", "e", "l", "l", "o"]
+ 
+    // Step 2. Use the reverse() method to reverse the new created array
+    var reverseArray = splitString.reverse(); // var reverseArray = ["h", "e", "l", "l", "o"].reverse();
+    // ["o", "l", "l", "e", "h"]
+ 
+    // Step 3. Use the join() method to join all elements of the array into a string
+    var joinArray = reverseArray.join(""); // var joinArray = ["o", "l", "l", "e", "h"].join("");
+    // "olleh"
+    
+    console.log(joinArray);
+}

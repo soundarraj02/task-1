@@ -11,5 +11,7 @@ router.post('/stringMatch', product_controller.stringMatch);
 router.post('/testing',product_controller.testing);
 router.post('/sumArray',product_controller.sumArray);
 router.post('/RemoveDuplicate',product_controller.RemoveDuplicate)
+router.post('/reverseString',product_controller.reverseString)
+
 
 module.exports = router; 
