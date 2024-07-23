@@ -13,5 +13,4 @@ router.post('/sumArray',product_controller.sumArray);
 router.post('/RemoveDuplicate',product_controller.RemoveDuplicate)
 router.post('/reverseString',product_controller.reverseString)
 
-
 module.exports = router; 

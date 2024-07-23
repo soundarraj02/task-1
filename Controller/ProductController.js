@@ -111,6 +111,8 @@ exports.sumArray = async(req,res)=>{
     // Step 3. Use the join() method to join all elements of the array into a string
     var joinArray = reverseArray.join(""); // var joinArray = ["o", "l", "l", "e", "h"].join("");
     // "olleh"
+
     
     console.log(joinArray);
 }
+
